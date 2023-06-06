@@ -8,6 +8,9 @@ import {
 import "./index.css";
 import Main from './Layout/Main';
 import Home from './Pages/Home/Home';
+import Instructors from './Pages/Instructors';
+import Classes from './Pages/Classes';
+import Dashboard from './Layout/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,18 @@ const router = createBrowserRouter([
       {
         path : '/',
         element : <Home></Home>
+      },
+      {
+        path :'/Instructors',
+        element : <Instructors></Instructors>
+      },
+      {
+        path : '/classes',
+        element : <Classes></Classes>
+      },
+      {
+        path : '/dashboard',
+        element : <Dashboard></Dashboard>
       }
     ]
   },
