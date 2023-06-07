@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
+import './Topslider.css'
 
 import img1 from '../../../assets/image/Image-1.jpg'
 import img2 from '../../../assets/image/img-6.jpg'

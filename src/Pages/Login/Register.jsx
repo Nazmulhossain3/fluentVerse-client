@@ -1,10 +1,34 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Component/Provider/AuthProvider";
 
 const Register = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const navigate = useNavigate()
+    const {createUser,userUpdate,logOut} = useContext(AuthContext)
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
+
+        createUser(data.email,data.password)
+        .then(result => {
+
+        const loggedUser = result.user
+        console.log(loggedUser)
+        userUpdate(data.name,data.photoURL)
+          logOut()
+
+          
+        console.log(loggedUser)
+        
+        navigate('/')
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+
     }
     return (
         <div>
@@ -47,7 +71,7 @@ const Register = () => {
           </label>
           <input type="text"  {...register("photoURL")} placeholder="photo" className="input input-bordered" />
           <label className="label">
-            {/* <a href="#" >Forgot password?</a> */}
+         
             <p><small>Already have an account ? <Link className="label-text-alt link link-hover" to='/login'>Login</Link> </small></p>
           </label>
         </div>

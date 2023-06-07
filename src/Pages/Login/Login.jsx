@@ -1,12 +1,50 @@
+/* eslint-disable no-unused-vars */
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Component/Provider/AuthProvider";
+import app from "../../Component/firebase/firebase.config";
+import { FaGoogle } from "react-icons/fa";
+
+
+
+    const auth = getAuth(app)
+    const provider = new GoogleAuthProvider()
 
 const Login = () => {
+ const { signIn, user } = useContext(AuthContext)
+const navigate = useNavigate()
+    
+
 const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
 const onSubmit = data => {
     console.log(data)
-};
+    signIn(data.email,data.password)
+    .then((result) => {
+      const signInUser = result.user;
+      console.log(signInUser);
+      navigate('/')
+     
+    })
+    .catch((error) => {
+      console.log(error)
+    });
 
+}
+
+const handleGoogleLogin = ()=> {
+    signInWithPopup(auth,provider)
+        
+    .then(result => {
+      const user = result.user
+      console.log(user)
+  })
+  .catch(error=> {
+     console.log(error)
+  })
+  }
 
 return (
         <div>
@@ -38,6 +76,11 @@ return (
           <input  className="btn btn-primary" type="submit" value="login" />
           
         </div>
+        <button onClick={handleGoogleLogin} className=" text-white border-2 p-2 rounded-lg bg-slate-950 flex items-center mx-auto w-full gap-2">
+              {" "}
+              <FaGoogle></FaGoogle>
+              <span>Login With Google</span>
+        </button>
       </form>
     </div>
   </div>

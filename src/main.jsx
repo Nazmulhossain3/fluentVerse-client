@@ -13,6 +13,9 @@ import Classes from './Pages/Classes';
 import Dashboard from './Layout/Dashboard/Dashboard';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register';
+import AuthProvider from './Component/Provider/AuthProvider';
+import AddClass from './Layout/Dashboard/Instructor/AddClass';
+import MyClass from './Layout/Dashboard/MyClass';
 
 const router = createBrowserRouter([
   {
@@ -31,10 +34,7 @@ const router = createBrowserRouter([
         path : '/classes',
         element : <Classes></Classes>
       },
-      {
-        path : '/dashboard',
-        element : <Dashboard></Dashboard>
-      },
+     
       {
         path : '/login',
         element : <Login></Login>
@@ -42,15 +42,33 @@ const router = createBrowserRouter([
       {
         path : '/register',
         element : <Register></Register>
+      },
+      {
+        path : '/addClass',
+        element : <AddClass></AddClass>
       }
     ]
   },
+  {
+    path : 'dashboard',
+    element : <Dashboard></Dashboard>,
+    children : [
+      {
+        path : 'addClass',
+        element : <AddClass></AddClass>
+      },
+      {
+        path : 'myClass',
+        element : <MyClass></MyClass>
+      }
+    ]
+  }
 ]);
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+   <AuthProvider>  <RouterProvider router={router} /></AuthProvider>
   </React.StrictMode>,
 )
