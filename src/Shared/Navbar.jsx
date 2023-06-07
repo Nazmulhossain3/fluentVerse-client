@@ -14,9 +14,11 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           
+          <Link to='/login'>
           <button className="border-2 font-serif rounded-lg btn-primary btn-outline px-4">
             Login
           </button>
+          </Link>
         </div>
       </div>
     );

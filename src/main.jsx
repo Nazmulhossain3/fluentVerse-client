@@ -11,6 +11,8 @@ import Home from './Pages/Home/Home';
 import Instructors from './Pages/Instructors';
 import Classes from './Pages/Classes';
 import Dashboard from './Layout/Dashboard/Dashboard';
+import Login from './Pages/Login/Login';
+import Register from './Pages/Login/Register';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
       {
         path : '/dashboard',
         element : <Dashboard></Dashboard>
+      },
+      {
+        path : '/login',
+        element : <Login></Login>
+      },
+      {
+        path : '/register',
+        element : <Register></Register>
       }
     ]
   },
