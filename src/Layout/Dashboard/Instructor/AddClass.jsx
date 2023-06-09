@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../Component/Provider/AuthProvider";
 
 const AddClass = () => {
+    const {user} = useContext(AuthContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
@@ -17,8 +20,8 @@ const AddClass = () => {
                 <input type="text" {...register("Class_image")} placeholder="class image" className="input input-bordered w-full input-sm max-w-xs" />
              </div>
                 <div className="flex mb-3 gap-4">
-                <input type="text" {...register("Instructor_name")} placeholder="Instructor name" className="input input-bordered w-full input-sm max-w-xs" />
-                <input type="email" {...register("email")}  placeholder="Instructor email" className="input input-bordered w-full input-sm max-w-xs" />
+                <input type="text" defaultValue={user?.displayName} {...register("Instructor_name")} placeholder="Instructor name" className="input input-bordered w-full input-sm max-w-xs" />
+                <input type="email" defaultValue={user?.email} {...register("email")}  placeholder="Instructor email" className="input input-bordered w-full input-sm max-w-xs" />
              </div>
                
                
