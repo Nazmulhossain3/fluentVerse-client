@@ -7,7 +7,7 @@ const Dashboard = () => {
             <Navbar></Navbar>
     <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content flex flex-col items-center justify-center">
+  <div className="drawer-content flex flex-col mx-auto mt-6">
     {/* Page content here */}
     <Outlet></Outlet>
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
@@ -19,6 +19,7 @@ const Dashboard = () => {
       {/* Sidebar content here */}
       <li><Link to='/dashboard/addClass'>Add Class</Link></li>
       <li><Link to='/dashboard/myClass'>My Class</Link></li>
+      <li><Link to='/dashboard/manageUsers'>Manage Users</Link></li>
     </ul>
   
   </div>

@@ -16,8 +16,27 @@ const Register = () => {
 
         const loggedUser = result.user
         console.log(loggedUser)
+      //  update use Profile
         userUpdate(data.name,data.photoURL)
-          logOut()
+        .then(()=>{
+          const saveUser = {name : data.name, email : data.email}
+          fetch('http://localhost:5000/users',{
+            method : 'POST',
+            headers : {
+              'content-type' : 'application/json'
+            },
+            body : JSON.stringify(saveUser)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+          })
+
+
+        })
+        
+        
+      logOut()
 
           
         console.log(loggedUser)

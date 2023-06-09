@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Component/Provider/AuthProvider";
 
 const Navbar = () => {
-    return (
+  const {user,logOut} = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+    logOut()
+    navigate('/login')
+  }
+   
+  
+  return (
         <div className="navbar shadow-2xl px-6 sticky bg-base-100">
         <div className="navbar-start">
           <p className="font-serif">Fluentverse Academy</p>
@@ -11,14 +22,31 @@ const Navbar = () => {
           <Link to='/Instructors' className="btn btn-ghost normal-case text-xl">Instructors</Link>
           <Link to='/classes' className="btn btn-ghost normal-case text-xl"> Classes</Link>
           <Link to='/dashboard' className="btn btn-ghost normal-case text-xl"> Dashboard</Link>
+          {
+            user && <Link onClick={handleLogOut}  className="btn btn-ghost normal-case text-xl">LogOut</Link>
+
+          }
+      
         </div>
         <div className="navbar-end">
           
-          <Link to='/login'>
+         {
+          user?.email ?    
+          <div className="w-10 rounded-full">
+                <img
+                 className="rounded-full"
+                  src={user?.photoURL}
+                />
+         </div>
+          :
+         
+         <Link to='/login'>
           <button className="border-2 font-serif rounded-lg btn-primary btn-outline px-4">
             Login
-          </button>
+          </button> 
           </Link>
+         }
+          
         </div>
       </div>
     );

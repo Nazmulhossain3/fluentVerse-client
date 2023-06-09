@@ -23,11 +23,9 @@ const onSubmit = data => {
     console.log(data)
     signIn(data.email,data.password)
     .then((result) => {
-      const signInUser = result.user;
-      console.log(signInUser);
-      navigate('/')
-     
-    })
+      const user = result.user 
+      console.log(user)
+     })
     .catch((error) => {
       console.log(error)
     });
@@ -38,8 +36,25 @@ const handleGoogleLogin = ()=> {
     signInWithPopup(auth,provider)
         
     .then(result => {
-      const user = result.user
-      console.log(user)
+      
+      const signInUser = result.user;
+      console.log(signInUser);
+      const saveUser = {name : signInUser.displayName, email : signInUser.email}
+      fetch('http://localhost:5000/users',{
+        method : 'POST',
+        headers : {
+          'content-type' : 'application/json'
+        },
+        body : JSON.stringify(saveUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        navigate('/')
+      })
+
+
+
   })
   .catch(error=> {
      console.log(error)
