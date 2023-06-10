@@ -7,9 +7,9 @@ const useInstructor = () => {
    
    useEffect(()=>{
     const fetchUser = async ()=> {
-        const response = await fetch(`/users/Instructor/${user?.email}`);
+        const response = await fetch(`http://localhost:5000/users/Instructor/${user?.email}`);
         const result = await response.json();
-        setIsInstructor(result)
+        setIsInstructor(result.instructor)
     }
 
     fetchUser()

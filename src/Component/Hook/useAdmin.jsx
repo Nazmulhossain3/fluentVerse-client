@@ -9,9 +9,9 @@ const [isAdmin,setIsAdmin] = useState(false)
 useEffect(()=>{
 
 const fetchUser = async ()=> {
-    const response = await fetch(`/users/admin/${user?.email}`);
+    const response = await fetch(`http://localhost:5000/users/admin/${user?.email}`);
     const result = await response.json();
-    setIsAdmin(result);
+    setIsAdmin(result.admin);
 }
 
 fetchUser()
