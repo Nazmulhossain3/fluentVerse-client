@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
 const Classes = () => {
-    const {data : classes = [],refetch} = useQuery(['classes'], async ()=> {
+    const {data : classes = []} = useQuery(['classes'], async ()=> {
         const res = await fetch('http://localhost:5000/classes')
         return res.json()
     })

@@ -24,6 +24,7 @@ import {
 import MySelectedClass from './Layout/Dashboard/Students/MySelectedClass';
 import MyEnrollClass from './Layout/Dashboard/Students/MyEnrollClass';
 import ManageClasses from './Layout/Dashboard/Admin/ManageClasses';
+import Payment from './Layout/Dashboard/Students/Payment/Payment';
 
 const queryClient = new QueryClient()
 
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path : 'myEnrollClass',
         element : <MyEnrollClass></MyEnrollClass>
+      },
+      {
+        path : 'payment/:id',
+        element : <Payment></Payment>
       }
     ]
   }
