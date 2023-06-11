@@ -3,13 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 
 const Instructors = () => {
   
-    const {data : Instructors = [],refetch} = useQuery(['Instructors'], async ()=> {
+    const {data : Instructors = [] } = useQuery(['Instructors'], async ()=> {
         const res = await fetch('http://localhost:5000/allInstructor')
         return res.json()
     })
     return (
         <div className="font-sans">
-            <h2 className="mt-4 text-2xl text-center">Let's Introduce Our Instructors</h2>
+            <h2 className="mt-4 font-semibold text-4xl text-center">Let's Introduce Our Instructors</h2>
            <div className="grid md:grid-cols-3 gap-4 p-10">
            {
                 Instructors.map((instructor,index) =>  <div key={index} className="card card-compact w-72 bg-base-100 shadow-xl">
