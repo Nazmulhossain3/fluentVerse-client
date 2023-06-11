@@ -1,6 +1,7 @@
 import { useContext } from "react";
 // import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Component/Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
     const {user} = useContext(AuthContext)
@@ -15,7 +16,7 @@ const AddClass = () => {
       const available_seats = parseFloat(form.available_seats.value) 
       const price = parseFloat(form.price.value)
       
-      const user = {
+      const classes = {
         name,
         class_image,
         instructor_name,
@@ -23,7 +24,33 @@ const AddClass = () => {
         available_seats,
         price
       }
-      console.log(user)
+      console.log(classes)
+    
+      fetch('http://localhost:5000/allClasses',{
+        method : 'POST',
+        headers : {
+            'content-type' : 'application/json'
+        },
+        body : JSON.stringify(classes)
+      })
+      .then(res=> res.json())
+      .then(data =>{
+        console.log(data)
+        if(data.insertedId){
+            Swal.fire(
+                'Good job!',
+                'Class is Added SuccessFully!',
+                'success'
+              )
+              form.reset()
+        }
+      
+    
+    
+    })
+      
+    
+    
     };
   
 
