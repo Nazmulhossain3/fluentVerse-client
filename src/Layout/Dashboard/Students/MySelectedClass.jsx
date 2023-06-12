@@ -1,17 +1,46 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MySelectedClass = () => {
-    const {data : selectedClasses = []} = useQuery(['selectedClasses'], async ()=> {
-        const res = await fetch('http://localhost:5000/classes')
+    const {data : selectedClasses = [],refetch} = useQuery(['selectedClasses'], async ()=> {
+        const res = await fetch('http://localhost:5000/selectedClass')
         return res.json()
     })
 
-
+    
     const handleSelectedClassDelete = (id)=> {
-        console.log(id)
+       
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+                refetch()
+              fetch(`http://localhost:5000/selectedClass/${id}`,{
+                  method : 'DELETE'
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log(data)
+                  if (data.deletedCount > 0) {
+                    refetch()
+                    Swal.fire("Deleted!", "Your class has been deleted.", "success");
+                
+                  }
+                });
+            }
+          });
+
+        
     }
 
   

@@ -50,13 +50,11 @@ const ManageUsers = () => {
                 .then((res) => res.json())
                 .then((data) => {
                   console.log(data)
-                  const remaining = users.filter(user => user._id !==id)
-                  console.log(remaining)
                   if (data.deletedCount > 0) {
                     refetch()
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
                 
-}
+                  }
                 });
             }
           });
