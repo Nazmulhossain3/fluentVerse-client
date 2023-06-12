@@ -42,7 +42,7 @@ const Classes = () => {
                   <p className="">Topic : {item.name}</p>
                   <p className="">Instructor : {item.instructor_name}</p>
                   <p className=""> Available seats : {item.available_seats}</p>
-                  <p className=""> Price : ${item.available_seats}</p>
+                  <p className=""> Price : ${item.price}</p>
 
                 <button onClick={()=> handleSelectedClass(item)} className=" bg-green-500 btn-outline rounded-2xl text-white border-2 w-full mt-3 mb-3 py-1 px-2">Select Class</button>
                   
