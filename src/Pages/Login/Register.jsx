@@ -17,7 +17,7 @@ const Register = () => {
         const loggedUser = result.user
         console.log(loggedUser)
       //  update use Profile
-        userUpdate(data.name,data.photoURL)
+        userUpdate(data.name,data.photoURLP)
         .then(()=>{
           const saveUser = {name : data.name, email : data.email, photo :data.photoURL}
           fetch('http://localhost:5000/users',{

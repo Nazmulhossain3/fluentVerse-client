@@ -25,6 +25,7 @@ import MySelectedClass from './Layout/Dashboard/Students/MySelectedClass';
 import MyEnrollClass from './Layout/Dashboard/Students/MyEnrollClass';
 import ManageClasses from './Layout/Dashboard/Admin/ManageClasses';
 import Payment from './Layout/Dashboard/Students/Payment/Payment';
+import ErrorPage from './Pages/ErrorPage/ErrorPage';
 
 const queryClient = new QueryClient()
 
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement : <ErrorPage></ErrorPage>,
     children : [
       {
         path : '/',
