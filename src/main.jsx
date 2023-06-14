@@ -26,6 +26,7 @@ import MyEnrollClass from './Layout/Dashboard/Students/MyEnrollClass';
 import ManageClasses from './Layout/Dashboard/Admin/ManageClasses';
 import Payment from './Layout/Dashboard/Students/Payment/Payment';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
+import PaymentHistory from './Layout/Dashboard/Students/Payment/PaymentHistory';
 
 const queryClient = new QueryClient()
 
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
         path : 'payment/:id',
         element : <Payment></Payment>,
         loader : ({params})=> fetch(`http://localhost:5000/classes/${params.id}`)
+      },
+      {
+        path : 'paymentHistory',
+        element :<PaymentHistory></PaymentHistory>
       }
     ]
   }

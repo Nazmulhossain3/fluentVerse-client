@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../../Component/Provider/AuthProvider";
 
 
 const MyEnrollClass = () => {
-    const {data : classes = []} = useQuery(['popularClass'], async ()=> {
-        const res = await fetch('http://localhost:5000/enrolledClass')
+    const {user} = useContext(AuthContext)
+    const {data : classes = []} = useQuery(['enrollClass'], async ()=> {
+        const res = await fetch(`http://localhost:5000/enrolledClass/${user?.email}`)
         return res.json()
     })
     return (
@@ -73,7 +76,7 @@ const MyEnrollClass = () => {
    
     
   </table>
-</div>
+            </div>
         </div>
     );
 };
