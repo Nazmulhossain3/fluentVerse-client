@@ -15,6 +15,7 @@ const AddClass = () => {
       const email = form.email.value 
       const available_seats = parseFloat(form.available_seats.value) 
       const price = parseFloat(form.price.value)
+      const enrolled = 0;
       
       const classes = {
         name,
@@ -22,7 +23,9 @@ const AddClass = () => {
         instructor_name,
         email,
         available_seats,
-        price
+        price,
+        enrolled
+
       }
       console.log(classes)
     

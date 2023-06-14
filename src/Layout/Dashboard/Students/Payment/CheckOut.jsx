@@ -89,11 +89,13 @@ const CheckOut = ({data,price}) => {
 
             const payment = {
               email : user?.email,
-              name : user?.displayName,
+              userName : user?.displayName,
               transactionId : paymentId,
               price,
               date : new Date(),
-              enroll : data._id,
+              enrolled : data._id,
+              class_image : data.class_image,
+              class_name : data.name
              
 
             }
