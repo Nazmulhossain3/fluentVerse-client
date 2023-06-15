@@ -1,42 +1,51 @@
-/* eslint-disable react/no-unknown-property */
-// import Sun from "../../assets/image/Sun.svg";
-// import Moon from  "../../assets/image/Moon.svg";
+import { useEffect } from 'react';
 import './DarkMood.css'
 
-const DarkMode = () => { 
-    const setDarkMood = () => {
-        document.querySelector('body').setDarkMood('data-theme', 'dark')
+const DarkMode = () => {
+  useEffect(() => {
+    const currentTheme = localStorage.getItem('data-theme');
+    if (currentTheme === 'dark') {
+      setDarkMode();
+    } else {
+      setLightMode();
     }
-  
-    const setLightMood = () => {
-        document.querySelector('body').setDarkMood('data-theme', 'light')
-    }
-  
+  }, []);
+
+  const setDarkMode = () => {
+    document.querySelector('body').setAttribute('data-theme', 'dark');
+    localStorage.setItem('data-theme', 'dark');
+  };
+
+  const setLightMode = () => {
+    document.querySelector('body').setAttribute('data-theme', 'light');
+    localStorage.setItem('data-theme', 'light');
+  };
+
   const toggleTheme = (e) => {
-    if(e.target.checked){
-        setDarkMood()
+    if (e.target.checked) {
+      setDarkMode();
+    } else {
+      setLightMode();
     }
-    else{
-        setLightMood()
-    }
-  }
-  
-  
-  
-    return (
-        <div className='dark_mode'>
-            <input
-                className='dark_mode_input'
-                type='checkbox'
-                id='darkmode-toggle'
-                onChange={toggleTheme}
-            />
-            <label className='dark_mode_label' for='darkmode-toggle'>
-              {/* <div className="flex"> <img className="w-4 h-4" src={Sun} alt="" />
-               <img className="w-4 h-4" src={Moon} alt="" /></div> */}
-            </label>
+  };
+
+  return (
+    <div className='dark_mode'>
+      <input
+        className='dark_mode_input'
+        type='checkbox'
+        id='darkmode-toggle'
+        onChange={toggleTheme}
+      />
+      <label className='dark_mode_label' htmlFor='darkmode-toggle'>
+        <div className='toggle-wrapper'>
+          <div className='toggle'>
+            <div className='toggle-handle'></div>
+          </div>
         </div>
-    );
+      </label>
+    </div>
+  );
 };
 
 export default DarkMode;

@@ -2,6 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 import Navbar from "../../Shared/Navbar";
 import useAdmin from "../../Component/Hook/useAdmin";
 import useInstructor from "../../Component/Hook/useInstructor";
+import { FaBookOpen, FaBookReader, FaCheckCircle, FaChessQueen, FaHistory, FaListAlt, FaUser } from "react-icons/fa";
+import { Slide,Zoom,Rotate } from "react-awesome-reveal";
 
 const Dashboard = () => {
  
@@ -12,7 +14,7 @@ const Dashboard = () => {
  
  
     return (
-        <div>
+      <div>
       <Navbar></Navbar>
     <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -29,22 +31,27 @@ const Dashboard = () => {
     
          {
           isAdmin ? (
-            <span>
-               <li><Link to='/dashboard/manageUsers'>Manage Users</Link></li>
-               <li><Link to='/dashboard/manageClasses'>Manage Classes</Link></li>
-          
+            <Rotate>
+               <span>
+               <li><Link to='/dashboard/manageUsers'><FaUser></FaUser> Manage Users</Link></li>
+              <li><Link to='/dashboard/manageClasses'><FaListAlt></FaListAlt> Manage Classes</Link></li>
             </span>
+            </Rotate>
           ) : isInstructor ? (
-            <span>
-              <li><Link to='/dashboard/addClass'>Add Class</Link></li>
-              <li><Link to='/dashboard/myClass'>My Class</Link></li>
+            <Slide>
+              <span>
+              <li><Link to='/dashboard/addClass'><FaBookOpen></FaBookOpen> Add Class</Link></li>
+              <li><Link to='/dashboard/myClass'><FaBookReader></FaBookReader>  My Class</Link></li>
             </span>
+            </Slide>
           ) : (
             <span>
-             <li><Link to='/dashboard/mySelectedClass'>My Selected Classes</Link></li>
-             <li><Link to='/dashboard/myEnrollClass'>My Enrolled Classes</Link></li>
-             <li><Link to='/dashboard/paymentHistory'>Payment History</Link></li>
-           
+            <Zoom>
+               <li><Link to='/dashboard/mySelectedClass'><FaCheckCircle></FaCheckCircle> My Selected Classes</Link></li>
+             <li><Link to='/dashboard/myEnrollClass'><FaChessQueen></FaChessQueen> My Enrolled Classes</Link></li>
+             <li><Link to='/dashboard/paymentHistory'><FaHistory></FaHistory> Payment History</Link></li>
+           P
+            </Zoom>
             </span>
           )
          }
@@ -67,7 +74,6 @@ const Dashboard = () => {
      
      
      </div>
-       
     );
 };
 

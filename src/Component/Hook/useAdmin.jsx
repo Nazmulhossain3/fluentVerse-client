@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 const useAdmin = () => {
 const {user} = useContext(AuthContext)
 const [isAdmin,setIsAdmin] = useState(false)
+// const [adminLoading,setAdminLoading] = useState
 
 
 useEffect(()=>{
