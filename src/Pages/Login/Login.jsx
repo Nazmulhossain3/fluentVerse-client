@@ -7,19 +7,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Component/Provider/AuthProvider";
 import app from "../../Component/firebase/firebase.config";
 import { FaGoogle } from "react-icons/fa";
-import { Icon } from 'react-icons-kit'
-import {eyeOff} from 'react-icons-kit/feather/eyeOff'
+import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 
 
 
-
-    const auth = getAuth(app)
-    const provider = new GoogleAuthProvider()
+const auth = getAuth(app)
+const provider = new GoogleAuthProvider()
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
  const { signIn, user } = useContext(AuthContext)
 const navigate = useNavigate()
-const [showPassword, setShowPassword] = useState(false);
+
+
     
 
 const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -67,6 +67,9 @@ const handleGoogleLogin = ()=> {
   })
   }
 
+
+  
+
 return (
         <div>
        <div className="hero min-h-screen bg-base-200">
@@ -87,8 +90,18 @@ return (
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" {...register("password")} placeholder="password" className="input input-bordered relative" />
-         <Icon icon={eyeOff} className="ml-40 mt-12 absolute " />
+          <input type={showPassword ? 'text' : 'password'} {...register("password")} placeholder="password" className="input input-bordered relative" />
+     <button
+      type="button"
+      className="absolute inset-y-0 right-0 flex items-center pr-10 -top-8"
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? (
+        <RiEyeOffLine className="h-4 w-4" />
+      ) : (
+        <RiEyeLine className="h-4 w-4" />
+      )}
+    </button>
         
         
         
