@@ -13,7 +13,7 @@ import tab4 from '../../assets/tab-2/img-4.jpg'
 
 const Extra = () => {
     return (
-       <div>
+       <div className='px-10 mt-4'>
         <h2 className='text-2xl text-center mt-6'>Choose Your Language</h2>
 
 

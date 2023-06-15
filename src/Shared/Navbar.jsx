@@ -21,7 +21,14 @@ const Navbar = () => {
           <Link to='/' className="btn btn-ghost normal-case text-xl">Home</Link>
           <Link to='/Instructors' className="btn btn-ghost normal-case text-xl">Instructors</Link>
           <Link to='/classes' className="btn btn-ghost normal-case text-xl"> Classes</Link>
+         {
+          user?.email && 
           <Link to='/dashboard' className="btn btn-ghost normal-case text-xl"> Dashboard</Link>
+
+         }
+         
+         
+         
           {
             user && <Link onClick={handleLogOut}  className="btn btn-ghost normal-case text-xl">LogOut</Link>
 

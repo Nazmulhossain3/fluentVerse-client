@@ -1,11 +1,15 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Component/Provider/AuthProvider";
 import app from "../../Component/firebase/firebase.config";
 import { FaGoogle } from "react-icons/fa";
+import { Icon } from 'react-icons-kit'
+import {eyeOff} from 'react-icons-kit/feather/eyeOff'
+
 
 
 
@@ -15,6 +19,7 @@ import { FaGoogle } from "react-icons/fa";
 const Login = () => {
  const { signIn, user } = useContext(AuthContext)
 const navigate = useNavigate()
+const [showPassword, setShowPassword] = useState(false);
     
 
 const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -64,7 +69,7 @@ const handleGoogleLogin = ()=> {
 
 return (
         <div>
-     <div className="hero min-h-screen bg-base-200">
+       <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col ">
     <h2 className="text-2xl">Please Login</h2>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -82,7 +87,11 @@ return (
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" {...register("password")} placeholder="password" className="input input-bordered" />
+          <input type="password" {...register("password")} placeholder="password" className="input input-bordered relative" />
+         <Icon icon={eyeOff} className="ml-40 mt-12 absolute " />
+        
+        
+        
           <label className="label">
             <Link to='/register' className="label-text-alt link link-hover">have you any account? register</Link>
           </label>
@@ -100,7 +109,12 @@ return (
       </form>
     </div>
   </div>
-</div>
+     </div>
+         
+       
+
+        
+        
         </div>
     );
 };

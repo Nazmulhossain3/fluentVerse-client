@@ -4,7 +4,7 @@ const Footer = () => {
         <footer className="footer p-10 bg-base-200 text-base-content">
         <div>
          <h2>Fluentverse Academy</h2>
-          <p>Fluentverse Academy.com<br/>Providing reliable online learning since 1992</p>
+          <p>Fluentverse Academy.com<br/> <p>Copyright © 2023 - All right reserved</p>P</p>
         </div> 
         <div>
           <span className="footer-title">Services</span> 
