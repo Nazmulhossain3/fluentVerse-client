@@ -7,7 +7,7 @@ import { Slide,Zoom,Rotate } from "react-awesome-reveal";
 
 const Dashboard = () => {
  
-    const isAdmin = useAdmin()
+const [isAdmin] = useAdmin()
     
     const isInstructor = useInstructor()
     console.log(isAdmin,isInstructor)
@@ -50,7 +50,7 @@ const Dashboard = () => {
                <li><Link to='/dashboard/mySelectedClass'><FaCheckCircle></FaCheckCircle> My Selected Classes</Link></li>
              <li><Link to='/dashboard/myEnrollClass'><FaChessQueen></FaChessQueen> My Enrolled Classes</Link></li>
              <li><Link to='/dashboard/paymentHistory'><FaHistory></FaHistory> Payment History</Link></li>
-           P
+           
             </Zoom>
             </span>
           )

@@ -27,7 +27,6 @@ import ManageClasses from './Layout/Dashboard/Admin/ManageClasses';
 import Payment from './Layout/Dashboard/Students/Payment/Payment';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import PaymentHistory from './Layout/Dashboard/Students/Payment/PaymentHistory';
-import AdminRoute from './Component/PrivateRoute/AdminRoute';
 
 const queryClient = new QueryClient()
 
@@ -78,11 +77,11 @@ const router = createBrowserRouter([
       },
       {
        path : 'manageUsers',
-       element : <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+       element : <ManageUsers></ManageUsers>
       },
       {
         path : 'manageClasses',
-        element : <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+        element : <ManageClasses></ManageClasses>
       },
       {
         path : 'mySelectedClass',
