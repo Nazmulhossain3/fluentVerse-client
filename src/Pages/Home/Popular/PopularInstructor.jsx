@@ -8,10 +8,10 @@ const PopularInstructor = () => {
  
     return (
         <div className="shadow-2xl">
-            <h2 className="mt-8 text-2xl text-green-800 text-center font-serif font-bold py-2">Our popular Instructors  </h2>
+            <h2 className="mt-8 text-2xl text-center  font-semibold py-2">Our popular Instructors  </h2>
         
         <div className="divider px-10"></div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-10 ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 py-12 px-24 ">
         {
             instructors.map(item => <div key={item._id} className="card card-compact bg-base-100 shadow-xl">
             <figure><img src={item.photo} className="h-72" alt="" /></figure>

@@ -13,12 +13,13 @@ import tab4 from '../../assets/tab-2/img-4.jpg'
 
 const Extra = () => {
     return (
-       <div className='px-10 mt-4'>
+       <div className=' mt-12'>
         <h2 className='text-2xl text-center mt-6'>Choose Your Language</h2>
 
 
+      <div className='px-24 py-12'>
 
-         <Tabs>
+      <Tabs>
     <TabList>
       <Tab>English</Tab>
       <Tab>German</Tab>
@@ -217,6 +218,9 @@ const Extra = () => {
   
   
        </Tabs>
+
+      </div>
+        
        </div>
     );
 };

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Component/Provider/AuthProvider";
+import DarkMode from "../Component/DarkMode/DarkMode";
 
 const Navbar = () => {
   const {user,logOut} = useContext(AuthContext)
@@ -17,7 +18,7 @@ const Navbar = () => {
         <div className="navbar-start">
           <p className="font-serif">Fluentverse Academy</p>
         </div>
-        <div className="navbar-center font-serif">
+        <div className="navbar-center">
           <Link to='/' className="btn btn-ghost normal-case text-xl">Home</Link>
           <Link to='/Instructors' className="btn btn-ghost normal-case text-xl">Instructors</Link>
           <Link to='/classes' className="btn btn-ghost normal-case text-xl"> Classes</Link>
@@ -35,6 +36,7 @@ const Navbar = () => {
           }
       
         </div>
+        <DarkMode></DarkMode>
         <div className="navbar-end">
           
          {

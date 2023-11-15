@@ -9,7 +9,7 @@ const [adminLoading,setAdminLoading] = useState('')
 
 useEffect(()=>{
 
-const fetchUser = async ()=> {
+    const fetchUser = async ()=> {
     const response = await fetch(`http://localhost:5000/users/admin/${user?.email}`);
     const result = await response.json();
     setIsAdmin(result.admin);
